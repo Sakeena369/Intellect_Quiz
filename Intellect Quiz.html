@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="quizApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Quiz App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="Angular.js"></script>
+
+       
+</head>
+<body ng-controller="QuizController">
+    <header>
+        <h1>Intellect Quiz</h1><br><br><br>
+    </header>
+
+    <div class="quiz-container" ng-show="!quizStarted" ng-show="!quizOver">
+        <h2>SELECT A GENRE</h2>
+        <div class="genre-images">
+            <div ng-repeat="genre in genres" ng-click="startQuiz(genre)">
+                <img ng-src="{{ genre + '.png' }}" alt="{{ genre }}" class="genre-image">
+                <p>{{ genre }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="quiz-container" ng-show="quizStarted && !quizOver">
+        <div class="progress-bar">
+            <div class="progress" style="width: {{(currentQuestion / questions.length) * 100}}%;"></div>
+        </div>
+        <div class="timer">Time Left: {{ timeLeft }}s</div>
+        <div class="question">{{ questions[currentQuestion].question }}</div>
+        <ul class="options">
+            <li ng-repeat="option in questions[currentQuestion].options" 
+                ng-click="selectAnswer(option)" 
+                ng-class="{'correct': answered && option === questions[currentQuestion].answer, 'incorrect': answered && selectedAnswer === option && option !== questions[currentQuestion].answer}">
+                {{ option }}
+            </li>
+        </ul>
+        <button ng-click="nextQuestion()" ng-disabled="!answered">Next</button>
+    </div>
+
+    <!-- Quiz Over Container -->
+    <div class="quiz-over-container" ng-show="quizOver && !nameSubmitted">
+        <h2 class="h2">Quiz Over!</h2>
+        <p class="p">Your score: {{ score }} / {{ questions.length }}</p>
+        <div>
+            <br>
+            <input class="a" type="text" ng-model="userName" placeholder="Enter your name" /><br>
+            <button ng-click="submitName()">Submit</button>
+        </div>
+    </div>
+
+    <!-- Leaderboard Section -->
+    <div class="leaderboard" ng-show="showLeaderboard">
+        <h2>Leaderboard</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="entry in leaderboard | orderBy:'-score'">
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ entry.name }}</td>
+                    <td>{{ entry.score }}</td>
+                </tr>
+            </tbody>
+        </table><br>
+        <button ng-click="restartQuiz()">Restart Quiz</button>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,216 @@
+ 
+ body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 20px;
+    background: #36454F; 
+    color: white;
+}
+
+header h1 {
+    font-size: 36px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Quiz Container */
+.quiz-container {
+    width: 1000px;
+    height: 420px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: #36454F; 
+    box-shadow: 0px 10px 30px white;
+    animation: fadeIn 0.5s ease;
+}
+
+/* animation for the quiz container */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Genre Images */
+.genre-images {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.genre-images div {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.genre-images div:hover {
+    transform: scale(1.1);
+}
+
+.genre-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 10px;
+    background: linear-gradient(135deg, white, #FFFFF0);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+
+
+/* Timer */
+.timer {
+    font-size: 25px;
+    color: #dedddd;
+    font-weight: bold;
+    margin-bottom: 15px;
+    animation: pulse 1s infinite;
+    margin-left: -800px;
+}
+/* animation for the timer */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Question and Options */
+.question {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+.options {
+    list-style: none;
+    padding: 0;
+}
+
+p {
+    color: white;
+}
+
+.options li {
+    margin: 10px auto;
+    width: 300px;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.options li:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateX(5px);
+    cursor: pointer;
+}
+
+.options li.correct {
+    background: #28a745;
+    border: #28a745;
+    color: white;
+}
+
+.options li.incorrect {
+    background: #dc3545;
+    color: white;
+}
+
+/* Buttons */
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border: 2px solid white;
+    background: linear-gradient(135deg, #36454F, #444242);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Quiz Over Container */
+.quiz-over-container {
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: #ffffff; /* Solid background */
+    box-shadow: 0px 10px 30px white;
+    animation: fadeIn 0.5s ease;
+    color: #36454F; /* Text color */
+}
+/* style for the p and h2 tag of the quiz over container */
+.p{
+    color: #36454F;
+    font-size: 20px;
+}
+
+.h2{
+    font-size: 40px;
+    color: #36454F;
+}
+
+
+
+/* Leaderboard Section */
+.leaderboard {
+    margin-top: 20px;
+    font-size: 20px;
+    justify-content: center;
+}
+
+.leaderboard table {
+    width: 800px;
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.leaderboard th, .leaderboard td {
+    padding: 10px;
+    border: 1px solid white;
+}
+
+.leaderboard th {
+    background-color: #32383e;
+    
+}
+
+/* Style for Input */
+input {
+    height: 30px;
+    width: 300px;
+    font-size: 20px;
+}
