@@ -20,7 +20,7 @@
                     { question: "What is 5 + 3?", options: ["5", "15", "12", "8"], answer: "8" },
                     { question: "What is 12 / 4?", options: ["2", "3", "4", "6"], answer: "3" },
                     { question: "What is the area of a rectangle with length 10 cm and width 5 cm?", options: ["30 cm2","40 cm2","50 cm2","60 cm2"], answer:"50 cm2"},
-                    { question: "What is ³√27?", options: ["90 deg","180 deg","270 deg","360 deg"], answer:"180 deg"},
+                    { question: "What is ³√27?", options: ["2","3","4","5"], answer:"3"},
                     { question: "Which shape has only one curved surface and no edges?", options: ["Cube","Cone","Sphere","Cylinder"], answer:"Sphere"}
                 ],
                 "Science": [
