@@ -28,7 +28,7 @@
 
     <div class="quiz-container" ng-show="quizStarted && !quizOver">
         <div class="progress-bar">
-            <div class="progress" style="width: {{(currentQuestion / questions.length) * 100}}%;"></div>
+            <div class="progress" ng-style="{ width: (currentQuestion / questions.length) * 100 + '%' }"></div>
         </div>
         <div class="timer">Time Left: {{ timeLeft }}s</div>
         <div class="question">{{ questions[currentQuestion].question }}</div>

@@ -2,11 +2,12 @@
         var app = angular.module('quizApp', []);
         app.controller('QuizController', function($scope, $interval) {
             $scope.genres = ["General Knowledge", "Mathematics", "Science"];
-            $scope.leaderboard = []; // Array to store leaderboard data
             $scope.userName = ""; // User's name
             $scope.nameSubmitted = false; // Flag to check if name is submitted
             $scope.showLeaderboard = false; // Flag to show/hide leaderboard
             var timer;
+
+            $scope.leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
 
             var questionBank = {
                 "General Knowledge": [
@@ -77,11 +78,27 @@
 
             $scope.submitName = function() {
                 if ($scope.userName) {
-                    $scope.leaderboard.push({ name: $scope.userName, score: $scope.score });
+                    var existingUser = $scope.leaderboard.find(function(user) {
+                        return user.name.toLowerCase() === $scope.userName.toLowerCase();
+                    });
+            
+                    if (existingUser) {
+                        // Update the score ONLY if the current score is higher than the previous score
+                        if ($scope.score > existingUser.score) {
+                            existingUser.score = $scope.score;
+                        }
+                    } else {
+                        // Push new user if not already in leaderboard
+                        $scope.leaderboard.push({ name: $scope.userName, score: $scope.score });
+                    }
+                    localStorage.setItem("leaderboard", JSON.stringify($scope.leaderboard));
+            
                     $scope.nameSubmitted = true;
-                    $scope.showLeaderboard = true; // Show leaderboard after name submission
+                    $scope.showLeaderboard = true;
                 }
             };
+            
+            
 
             $scope.restartQuiz = function() {
                 $scope.quizStarted = false;
